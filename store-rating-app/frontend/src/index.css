@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* Design tokens. Light is the default; [data-theme=dark] swaps the whole palette. */
+:root {
+  --bg: #f2f4fa; --surface: #ffffff; --ink: #0d1226; --muted: #596080; --line: #dfe3f0;
+  --brand: #3347e0; --brand-strong: #2433b8; --brand-soft: #e9ecff; --on-brand: #ffffff;
+  --star: #f4a30c; --danger: #c62f1d; --danger-soft: #fdecea; --ok: #0f7a56; --ok-soft: #e3f5ee;
+  --shadow: 0 1px 2px rgb(13 18 38 / .05), 0 4px 16px rgb(13 18 38 / .05);
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --bg: #0b0f1f; --surface: #141a30; --ink: #eef0fb; --muted: #98a2c6; --line: #252c4b;
+  --brand: #8795ff; --brand-strong: #a3aeff; --brand-soft: #1e2650; --on-brand: #0b0f1f;
+  --star: #ffb52e; --danger: #ff8573; --danger-soft: #3a1b1a; --ok: #3ccf9a; --ok-soft: #12332b;
+  --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 4px 16px rgb(0 0 0 / .3);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Figtree', ui-sans-serif, system-ui, sans-serif;
+  --color-bg: var(--bg); --color-surface: var(--surface); --color-ink: var(--ink); --color-muted: var(--muted);
+  --color-line: var(--line); --color-brand: var(--brand); --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft); --color-on-brand: var(--on-brand); --color-star: var(--star);
+  --color-danger: var(--danger); --color-danger-soft: var(--danger-soft); --color-ok: var(--ok); --color-ok-soft: var(--ok-soft);
+}
+
+html { scroll-padding-top: 5rem; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.015em; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 6px; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; }
+.shadow-card { box-shadow: var(--shadow); }
+.tabular { font-variant-numeric: tabular-nums; }
+
+@keyframes pop { 0% { transform: scale(.85); } 60% { transform: scale(1.18); } 100% { transform: scale(1); } }
+.animate-pop { animation: pop .28s ease-out; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.animate-toast { animation: toast-in .2s ease-out; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
